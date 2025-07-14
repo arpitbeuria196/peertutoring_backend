@@ -19,7 +19,9 @@ router.post('/', [
   body('mentorId').isMongoId().withMessage('Valid mentor ID is required'),
   body('subject').trim().isLength({ min: 1, max: 200 }).withMessage('Subject must be 1-200 characters'),
   body('description').optional().trim().isLength({ max: 1000 }).withMessage('Description must be less than 1000 characters'),
-  body('preferredDates').isArray({ min: 1, max: 5 }).withMessage('1-5 preferred dates required'),
+  body('preferredTimes').isArray({ min: 1, max: 5 }).withMessage('1-5 preferred times required'),
+  body('preferredTimes.*.date').isISO8601().withMessage('Each preferred time must have a valid date'),
+  body('preferredTimes.*.timeSlots').optional().isArray().withMessage('Time slots must be an array'),
   body('duration').isInt({ min: 30, max: 180 }).withMessage('Duration must be 30-180 minutes'),
   body('sessionType').isIn(['online', 'in-person']).withMessage('Session type must be online or in-person')
 ], async (req, res) => {
@@ -33,7 +35,7 @@ router.post('/', [
       });
     }
 
-    const { mentorId, subject, description, preferredDates, duration, sessionType } = req.body;
+    const { mentorId, subject, description, preferredTimes, duration, sessionType } = req.body;
 
     // Verify mentor exists and is active
     const mentor = await User.findOne({
@@ -70,7 +72,7 @@ router.post('/', [
       mentorId,
       subject,
       description,
-      preferredDates: preferredDates.map(date => new Date(date)),
+      preferredTimes: preferredTimes,
       duration,
       sessionType,
       status: 'pending'
@@ -219,14 +221,13 @@ router.put('/:id/accept', [
 
     // Create the session
     const session = new Session({
+      title: sessionRequest.subject,
+      description: sessionRequest.description,
       studentId: sessionRequest.studentId._id,
       mentorId: req.user._id,
-      subject: sessionRequest.subject,
-      description: sessionRequest.description,
-      scheduledDate: new Date(scheduledDate),
+      scheduledAt: new Date(scheduledDate),
       duration: sessionRequest.duration,
-      sessionType: sessionRequest.sessionType,
-      meetingLink,
+      meetLink: meetingLink || 'https://meet.google.com/abc-defg-hij',
       status: 'scheduled'
     });
 

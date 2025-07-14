@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MentorHub - Connect. Learn. Grow.</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="hero-title">Find Your Perfect Mentor Today</h1>
+            <p class="hero-subtitle">Connect with verified mentors who can help you achieve your<br>academic goals through personalized 1-on-1 sessions</p>
+            
+            <div class="hero-actions">
+                <button class="btn btn-dark btn-lg me-3" onclick="window.location.href='register.html?role=mentor'">
+                    <i class="fas fa-chalkboard-teacher me-2"></i>Become a Mentor
+                </button>
+                <button class="btn btn-outline-dark btn-lg" onclick="window.location.href='register.html?role=student'">
+                    <i class="fas fa-search me-2"></i>Find a Mentor
+                </button>
+            </div>
+
+            <!-- Features -->
+            <div class="row mt-5 features">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <h5>Verified Mentors</h5>
+                        <p>All our mentors go through a rigorous verification process to ensure they meet our high standards for expertise and teaching ability.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5>1-on-1 Sessions</h5>
+                        <p>Get personalized attention with dedicated one-on-one tutoring sessions tailored to your specific learning needs and goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer will be loaded by universal-components.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="socket.io.min.js"></script>
+    <script src="universal-components.js"></script>
+    <script src="messaging-system.js"></script>
+    <script>
+        // Landing page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user is already logged in
+            const token = localStorage.getItem('token');
+            if (token) {
+                // Get user data and redirect to appropriate dashboard
+                const user = JSON.parse(localStorage.getItem('user') || '{}');
+                if (user.role) {
+                    const dashboardMap = {
+                        'admin': 'admin-dashboard.html',
+                        'mentor': 'mentor-dashboard.html',
+                        'student': 'student-dashboard.html'
+                    };
+                    window.location.href = dashboardMap[user.role] || 'dashboard.html';
+                } else {
+                    window.location.href = 'dashboard.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

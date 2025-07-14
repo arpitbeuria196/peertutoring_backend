@@ -44,7 +44,7 @@ router.post('/', [
 
     const message = new Message({
       senderId: req.user._id,
-      recipientId,
+      receiverId: recipientId,
       content,
       conversationId: finalConversationId,
       isRead: false
@@ -55,7 +55,7 @@ router.post('/', [
     // Populate for response
     await message.populate([
       { path: 'senderId', select: 'firstName lastName username profilePicture' },
-      { path: 'recipientId', select: 'firstName lastName username profilePicture' }
+      { path: 'receiverId', select: 'firstName lastName username profilePicture' }
     ]);
 
     res.status(201).json({

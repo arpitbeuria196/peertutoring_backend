@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - MentorHub</title>
+    <meta name="description" content="Frequently asked questions about MentorHub mentorship platform. Find answers about sessions, payments, mentor verification, and more.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-gradient fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="fas fa-graduation-cap me-2"></i>MentorHub
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="faq.html">FAQ</a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-light ms-2 px-3" href="register.html">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main style="margin-top: 76px;">
+        <!-- Hero Section -->
+        <section class="bg-gradient-primary text-white py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h1 class="display-4 fw-bold mb-4">Frequently Asked Questions</h1>
+                        <p class="lead mb-4">Find quick answers to common questions about our mentorship platform.</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-center">
+                            <i class="fas fa-question-circle fa-5x opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search FAQ -->
+        <section class="py-4 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mx-auto">
+                        <div class="input-group">
+                            <input type="text" id="faqSearch" class="form-control" placeholder="Search FAQ...">
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Categories -->
+        <section class="py-5">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12">
+                        <nav class="nav nav-pills nav-fill">
+                            <a class="nav-link active" href="#general" data-category="general">General</a>
+                            <a class="nav-link" href="#mentors" data-category="mentors">Finding Mentors</a>
+                            <a class="nav-link" href="#sessions" data-category="sessions">Sessions</a>
+                            <a class="nav-link" href="#payments" data-category="payments">Payments</a>
+                            <a class="nav-link" href="#technical" data-category="technical">Technical</a>
+                        </nav>
+                    </div>
+                </div>
+
+                <!-- General FAQ -->
+                <div id="general" class="faq-category">
+                    <h3 class="fw-bold mb-4">General Questions</h3>
+                    <div class="accordion" id="generalAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#general1">
+                                    What is MentorHub?
+                                </button>
+                            </h2>
+                            <div id="general1" class="accordion-collapse collapse show" data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    MentorHub is a peer tutoring platform that connects students with verified mentors across various subjects and skills. Our platform facilitates personalized learning experiences through one-on-one sessions, group tutorials, and comprehensive mentorship programs.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general2">
+                                    How do I get started?
+                                </button>
+                            </h2>
+                            <div id="general2" class="accordion-collapse collapse" data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    Getting started is easy! Simply sign up for an account, complete your profile, and upload required verification documents. Once approved, you can browse mentors, book sessions, and begin your learning journey. Students can start immediately, while mentors go through a verification process.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#general3">
+                                    Is MentorHub free to use?
+                                </button>
+                            </h2>
+                            <div id="general3" class="accordion-collapse collapse" data-bs-parent="#generalAccordion">
+                                <div class="accordion-body">
+                                    Creating an account and browsing mentors is completely free. You only pay for the mentoring sessions you book. Each mentor sets their own hourly rate, and you can filter by price range to find options that fit your budget.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Finding Mentors FAQ -->
+                <div id="mentors" class="faq-category d-none">
+                    <h3 class="fw-bold mb-4">Finding Mentors</h3>
+                    <div class="accordion" id="mentorsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#mentors1">
+                                    How do I find the right mentor?
+                                </button>
+                            </h2>
+                            <div id="mentors1" class="accordion-collapse collapse show" data-bs-parent="#mentorsAccordion">
+                                <div class="accordion-body">
+                                    Use our advanced search filters to find mentors by subject expertise, availability, hourly rate, location, and student ratings. You can also read mentor profiles, view their qualifications, and check reviews from other students before booking a session.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mentors2">
+                                    Are all mentors verified?
+                                </button>
+                            </h2>
+                            <div id="mentors2" class="accordion-collapse collapse" data-bs-parent="#mentorsAccordion">
+                                <div class="accordion-body">
+                                    Yes! All mentors go through a comprehensive verification process. We check their credentials, educational background, and professional experience. Mentors must provide valid documentation and pass our quality standards before they can offer sessions on the platform.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#mentors3">
+                                    Can I see mentor ratings and reviews?
+                                </button>
+                            </h2>
+                            <div id="mentors3" class="accordion-collapse collapse" data-bs-parent="#mentorsAccordion">
+                                <div class="accordion-body">
+                                    Absolutely! Each mentor profile displays their average rating, total number of sessions completed, and detailed reviews from students. This helps you make informed decisions when choosing a mentor that best fits your learning needs.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sessions FAQ -->
+                <div id="sessions" class="faq-category d-none">
+                    <h3 class="fw-bold mb-4">Sessions & Scheduling</h3>
+                    <div class="accordion" id="sessionsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#sessions1">
+                                    How do I book a session?
+                                </button>
+                            </h2>
+                            <div id="sessions1" class="accordion-collapse collapse show" data-bs-parent="#sessionsAccordion">
+                                <div class="accordion-body">
+                                    To book a session, find your desired mentor, click "Book Session," select your preferred date and time, choose session duration, and provide any specific topics you'd like to cover. The mentor will receive your request and can accept or suggest alternative times.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sessions2">
+                                    What if I need to cancel or reschedule?
+                                </button>
+                            </h2>
+                            <div id="sessions2" class="accordion-collapse collapse" data-bs-parent="#sessionsAccordion">
+                                <div class="accordion-body">
+                                    You can cancel or reschedule sessions up to 24 hours in advance for a full refund. Cancellations made less than 24 hours before the session may incur a cancellation fee. Emergency cancellations are handled case-by-case.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sessions3">
+                                    How do sessions work?
+                                </button>
+                            </h2>
+                            <div id="sessions3" class="accordion-collapse collapse" data-bs-parent="#sessionsAccordion">
+                                <div class="accordion-body">
+                                    Sessions are conducted via video call using integrated Google Meet links. You'll receive the meeting link before your session starts. Sessions include screen sharing, document collaboration, and recording options (with consent). All sessions are private and secure.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payments FAQ -->
+                <div id="payments" class="faq-category d-none">
+                    <h3 class="fw-bold mb-4">Payments & Billing</h3>
+                    <div class="accordion" id="paymentsAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#payments1">
+                                    How do payments work?
+                                </button>
+                            </h2>
+                            <div id="payments1" class="accordion-collapse collapse show" data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body">
+                                    Payments are processed securely when you book a session. We accept major credit cards, PayPal, and bank transfers. Payment is held in escrow and released to the mentor after the session is completed. You'll receive a detailed receipt for each transaction.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payments2">
+                                    What is your refund policy?
+                                </button>
+                            </h2>
+                            <div id="payments2" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body">
+                                    We offer full refunds for sessions cancelled 24+ hours in advance. If you're unsatisfied with a session, contact our support team within 24 hours for a review. We may offer partial or full refunds based on the circumstances and mentor feedback.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#payments3">
+                                    Are there any additional fees?
+                                </button>
+                            </h2>
+                            <div id="payments3" class="accordion-collapse collapse" data-bs-parent="#paymentsAccordion">
+                                <div class="accordion-body">
+                                    MentorHub charges a small service fee (typically 5-10%) added to the mentor's hourly rate. This fee covers platform maintenance, payment processing, and customer support. The total cost is clearly displayed before you complete your booking.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical FAQ -->
+                <div id="technical" class="faq-category d-none">
+                    <h3 class="fw-bold mb-4">Technical Support</h3>
+                    <div class="accordion" id="technicalAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#technical1">
+                                    What are the system requirements?
+                                </button>
+                            </h2>
+                            <div id="technical1" class="accordion-collapse collapse show" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    MentorHub works on any modern web browser (Chrome, Firefox, Safari, Edge). For video sessions, you'll need a stable internet connection, webcam, and microphone. We recommend using a desktop or laptop for the best experience, though mobile devices are supported.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#technical2">
+                                    I'm having trouble accessing my account
+                                </button>
+                            </h2>
+                            <div id="technical2" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    Try resetting your password using the "Forgot Password" link on the login page. If you're still having issues, clear your browser cache and cookies, or try a different browser. Contact our technical support team if problems persist.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#technical3">
+                                    How do I report a technical issue?
+                                </button>
+                            </h2>
+                            <div id="technical3" class="accordion-collapse collapse" data-bs-parent="#technicalAccordion">
+                                <div class="accordion-body">
+                                    Contact our support team through the help center or email technical@mentorhub.com. Include details about your browser, operating system, and steps to reproduce the issue. Our technical team typically responds within 2-4 hours during business hours.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Still Need Help -->
+                <div class="text-center mt-5 pt-5 border-top">
+                    <h3 class="fw-bold mb-3">Still need help?</h3>
+                    <p class="text-muted mb-4">Can't find the answer you're looking for? Our support team is here to help.</p>
+                    <div class="d-flex gap-3 justify-content-center">
+                        <a href="contact.html" class="btn btn-primary">
+                            <i class="fas fa-envelope me-2"></i>Contact Support
+                        </a>
+                        <a href="#" class="btn btn-outline-primary" onclick="openChat()">
+                            <i class="fas fa-comments me-2"></i>Live Chat
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <!-- Footer will be loaded by universal-components.js -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="socket.io.min.js"></script>
+    <script src="universal-components.js"></script>
+    
+    <script>
+        // FAQ Category Navigation
+        document.querySelectorAll('[data-category]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Update active nav
+                document.querySelectorAll('[data-category]').forEach(l => l.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                // Show/hide categories
+                document.querySelectorAll('.faq-category').forEach(cat => cat.classList.add('d-none'));
+                document.getElementById(e.target.dataset.category).classList.remove('d-none');
+            });
+        });
+        
+        // FAQ Search
+        document.getElementById('faqSearch').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const accordions = document.querySelectorAll('.accordion-item');
+            
+            accordions.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                const button = item.querySelector('.accordion-button');
+                const collapse = item.querySelector('.accordion-collapse');
+                
+                if (text.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    if (searchTerm) {
+                        button.classList.remove('collapsed');
+                        collapse.classList.add('show');
+                    }
+                } else {
+                    item.style.display = searchTerm ? 'none' : 'block';
+                }
+            });
+        });
+        
+        // Live chat function
+        function openChat() {
+            alert('Live chat feature coming soon! For immediate assistance, please email support@mentorhub.com');
+        }
+    </script>
+</body>
+</html>

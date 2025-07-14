@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - MentorHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="dashboard-container">
+        <!-- Student Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    MentorHub
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item" data-section="mentors">
+                    <i class="fas fa-users"></i>
+                    Find Mentors
+                </a>
+                <a href="#" class="nav-item" data-section="sessions">
+                    <i class="fas fa-calendar-alt"></i>
+                    My Sessions
+                </a>
+                <a href="#" class="nav-item" data-section="notifications">
+                    <i class="fas fa-bell"></i>
+                    Notifications
+                </a>
+                <a href="#" class="nav-item" data-section="messages">
+                    <i class="fas fa-comments"></i>
+                    Messages
+                </a>
+                <a href="#" class="nav-item" data-section="documents">
+                    <i class="fas fa-file-alt"></i>
+                    Documents
+                </a>
+                <a href="#" class="nav-item" data-section="profile">
+                    <i class="fas fa-user"></i>
+                    Profile
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <div class="user-info mb-2">
+                    <small class="text-muted">Student</small>
+                    <div id="student-name" class="fw-bold">Loading...</div>
+                </div>
+                <button class="btn btn-outline-primary btn-sm" onclick="logout()">
+                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Student Main Content -->
+        <div class="main-content">
+            <!-- Student Dashboard Section -->
+            <div id="dashboard-section" class="content-section active">
+                <div class="dashboard-header">
+                    <h2 id="student-greeting">Welcome back!</h2>
+                    <p class="text-muted">Continue your learning journey with expert mentors</p>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="quick-action-card">
+                            <i class="fas fa-search"></i>
+                            <h6>Find Mentors</h6>
+                            <p>Browse available mentors</p>
+                            <button class="btn btn-primary btn-sm" onclick="showSection('mentors')">
+                                <i class="fas fa-search me-1"></i>Find a Mentor
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="quick-action-card">
+                            <i class="fas fa-comments"></i>
+                            <h6>My Messages</h6>
+                            <p>Chat with mentors</p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="showSection('messages')">
+                                <i class="fas fa-envelope me-1"></i>View Messages
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="quick-action-card">
+                            <i class="fas fa-calendar"></i>
+                            <h6>My Sessions</h6>
+                            <p>View all sessions</p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="showSection('sessions')">
+                                <i class="fas fa-calendar me-1"></i>View Sessions
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Stats -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-primary">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="active-mentors">0</h3>
+                                <p>Active Mentors</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-success">
+                                <i class="fas fa-calendar-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="completed-sessions">0</h3>
+                                <p>Completed Sessions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-warning">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="upcoming-sessions">0</h3>
+                                <p>Upcoming Sessions</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon bg-info">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3 id="unread-messages">0</h3>
+                                <p>Unread Messages</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Dashboard Content -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <!-- Upcoming Sessions -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>Upcoming Sessions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="student-upcoming-sessions">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-calendar fa-3x mb-3"></i>
+                                        <p>No upcoming sessions scheduled</p>
+                                        <button class="btn btn-primary" onclick="showSection('mentors')">
+                                            Find a Mentor
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Activity -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Recent Activity</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="student-recent-activity">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-history fa-2x mb-2"></i>
+                                        <p>No recent activity</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <!-- Progress Card -->
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <h5>Learning Progress</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <label class="form-label">Profile Completion</label>
+                                    <div class="progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 60%">60%</div>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">Total Learning Hours</small>
+                                    <div class="h4">0 hrs</div>
+                                </div>
+                                <button class="btn btn-outline-primary btn-sm" onclick="showSection('profile')">
+                                    Complete Profile
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Recommended Mentors -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Recommended Mentors</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="recommended-mentors">
+                                    <div class="text-center text-muted">
+                                        <i class="fas fa-user-tie fa-2x mb-2"></i>
+                                        <p>Complete your profile to get personalized recommendations</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Find Mentors Section -->
+            <div id="mentors-section" class="content-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Find Mentors</h2>
+                    <div class="d-flex gap-2">
+                        <input type="text" class="form-control" placeholder="Search mentors..." id="mentor-search" style="width: 250px;">
+                        <button class="btn btn-primary" onclick="searchMentors()">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div id="mentors-grid">
+                    <!-- Mentors will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Notifications Section -->
+            <div id="notifications-section" class="content-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Notifications</h2>
+                    <button class="btn btn-outline-secondary btn-sm" onclick="markAllNotificationsAsRead()">
+                        <i class="fas fa-check-double"></i> Mark All as Read
+                    </button>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Session Notifications</h5>
+                                    <span class="badge bg-primary" id="notification-count">0</span>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="session-notifications">
+                                    <div class="text-center text-muted py-4">
+                                        <i class="fas fa-bell fa-2x mb-2"></i>
+                                        <p>No new session notifications</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Sessions Section -->
+            <div id="sessions-section" class="content-section">
+                <h2 class="mb-4">My Sessions</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Upcoming Sessions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="student-sessions-upcoming">
+                                    <!-- Upcoming sessions will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Past Sessions</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="student-sessions-past">
+                                    <!-- Past sessions will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div id="messages-section" class="content-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Messages</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>New Message
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>Conversations</h6>
+                            </div>
+                            <div class="card-body p-0">
+                                <div id="student-conversations-list">
+                                    <!-- Conversations will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>Select a conversation</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-comments fa-3x mb-3"></i>
+                                    <p>Choose a conversation to start messaging</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents Section -->
+            <div id="documents-section" class="content-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>My Documents</h2>
+                    <button class="btn btn-primary" onclick="showUploadModal()">
+                        <i class="fas fa-upload me-2"></i>Upload Document
+                    </button>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="student-documents-table">
+                            <!-- Documents table will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Profile Section -->
+            <div id="profile-section" class="content-section">
+                <h2 class="mb-4">My Profile</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Profile Information</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="student-profile-form">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="student-firstName">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="student-lastName">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Bio</label>
+                                        <textarea class="form-control" rows="3" id="student-bio" placeholder="Tell mentors about your learning goals..."></textarea>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <label class="form-label">Interests (comma separated)</label>
+                                            <input type="text" class="form-control" id="student-interests" placeholder="Programming, Web Development">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Experience Level</label>
+                                            <select class="form-select" id="student-level">
+                                                <option value="">Select level</option>
+                                                <option value="beginner">Beginner</option>
+                                                <option value="intermediate">Intermediate</option>
+                                                <option value="advanced">Advanced</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Profile Stats</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <small class="text-muted">Member since</small>
+                                    <div id="student-member-since">Loading...</div>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">Total Sessions</small>
+                                    <div id="student-total-sessions">0</div>
+                                </div>
+                                <div class="mb-3">
+                                    <small class="text-muted">Favorite Topics</small>
+                                    <div id="student-topics">Not set</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="socket.io.min.js"></script>
+    <script src="messaging-system.js"></script>
+    <script src="student-dashboard.js"></script>
+</body>
+</html>

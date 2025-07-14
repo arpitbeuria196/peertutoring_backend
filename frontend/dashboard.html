@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MentorHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    MentorHub
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Dashboard
+                </a>
+                <a href="#" class="nav-item" data-section="messages">
+                    <i class="fas fa-comments"></i>
+                    Messages
+                </a>
+                <a href="#" class="nav-item" data-section="mentors">
+                    <i class="fas fa-users"></i>
+                    My Mentors
+                </a>
+                <a href="#" class="nav-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    Settings
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn btn-outline-primary btn-sm" onclick="logout()">
+                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="content-section active">
+                <div class="dashboard-header">
+                    <h2 id="dashboard-greeting">Good morning, Sarah!</h2>
+                    <p class="text-muted">Welcome back to your mentorship dashboard. You have 3 upcoming sessions this week.</p>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="row mb-4">
+                    <div class="col-md-4">
+                        <div class="quick-action-card">
+                            <i class="fas fa-search"></i>
+                            <h6>Find Mentors</h6>
+                            <p>Browse available mentors</p>
+                            <button class="btn btn-primary btn-sm" onclick="alert('Find Mentors feature coming soon!')">
+                                <i class="fas fa-search me-1"></i>Find a Mentor
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="quick-action-card">
+                            <i class="fas fa-comments"></i>
+                            <h6>My Messages</h6>
+                            <p>Chat with mentors</p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="showSection('messages')">View Messages</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="quick-action-card">
+                            <i class="fas fa-calendar"></i>
+                            <h6>My Sessions</h6>
+                            <p>View all sessions</p>
+                            <button class="btn btn-outline-primary btn-sm" onclick="alert('Sessions feature coming soon!')">View Sessions</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Sessions -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5>Upcoming Sessions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="upcoming-sessions">
+                            <!-- Sessions will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Recent Activity</h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="recent-activity">
+                            <!-- Activity will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Messages Section -->
+            <div id="messages-section" class="content-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>Messages</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus me-2"></i>New Message
+                    </button>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>Conversations</h6>
+                            </div>
+                            <div class="card-body p-0">
+                                <div id="conversations-list">
+                                    <!-- Conversations will be loaded here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h6>Select a conversation</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-comments fa-3x mb-3"></i>
+                                    <p>Choose a conversation to start messaging</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mentors Section -->
+            <div id="mentors-section" class="content-section">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2>My Mentors</h2>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search me-2"></i>Find New Mentor
+                    </button>
+                </div>
+                <div id="mentors-grid">
+                    <!-- Mentors will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="content-section">
+                <h2>Settings</h2>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Profile Settings</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="profileForm">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" name="firstName" id="firstName">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" name="lastName" id="lastName">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-control" name="email" id="email" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Role</label>
+                                        <input type="text" class="form-control" id="role" readonly>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-save me-2"></i>Save Changes
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Toast Container -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="notificationToast" class="toast" role="alert">
+            <div class="toast-header">
+                <i class="fas fa-bell text-primary me-2"></i>
+                <strong class="me-auto">MentorHub</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body" id="toastMessage">
+                <!-- Message will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
